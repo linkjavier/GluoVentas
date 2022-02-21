@@ -42,6 +42,10 @@ generic_invoice = "Factura"
 generic_price = "Precio"
 generic_quantity = "Cantidad"
 generic_status = "Estado"
+generic_empty = "Vacio"
+
+generic_active = "Activo"
+generic_inactive = "Inactivo"
 
 generic_total_employee = "Total Empleados"
 generic_total_supplier = "Total Proveedores"
@@ -50,6 +54,7 @@ generic_total_product = "Total Productos"
 generic_total_sales = "Total Ventas"
 
 search_employee = "Buscar Empleado"
+search_product = "Buscar Producto"
 
 employee_details = "Detalles del Empleado"
 employee_id = "ID"
@@ -62,3 +67,4 @@ enter_category_name ="Ingresa nombre de la Categoría"
 generic_CID = "CID"
 
 product_details = "Detalles de Producto"
+product_id = "ID"
