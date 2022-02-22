@@ -43,6 +43,10 @@ generic_price = "Precio"
 generic_quantity = "Cantidad"
 generic_status = "Estado"
 generic_empty = "Vacio"
+generic_updated = "Actualizado"
+generic_confirm = "Confirmar"
+generic_added = "Añadido"
+generic_deleted = "Eliminado"
 
 generic_active = "Activo"
 generic_inactive = "Inactivo"
@@ -68,3 +72,16 @@ generic_CID = "CID"
 
 product_details = "Detalles de Producto"
 product_id = "ID"
+
+employee_required_id_error = "Se requiere el ID del empleado."
+employee_added = "Empleado añadido con éxito."
+employee_updated = "Empleado actualizado con éxito."
+employee_already_exist = "Este ID de empleado ya existe. Intenta nuevamente."
+employee_confirm_delete = "¿Desea eliminar este empleado?"
+employee_deleted = "Empleado eliminado con éxito"
+
+generic_success = "Éxito"
+
+search_by_option_message = "Selecciona una opción para buscar."
+search_input_required = "Se requiere la información a buscar."
+search_no_record_found = "Ningún registro encontrado."

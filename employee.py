@@ -142,12 +142,12 @@ class employeeClass:
         cur=con.cursor()
         try:
             if self.var_emp_id.get()=="":
-                messagebox.showerror("Error","Employee ID Must be required",parent=self.root)
+                messagebox.showerror("Error",constants.employee_required_id_error,parent=self.root)
             else:
                 cur.execute("SELECT * FROM employee WHERE ID=?",(self.var_emp_id.get(),))
                 row=cur.fetchone()
                 if row!=None:
-                    messagebox.showerror("Error","This Employee ID already assigned, try different",parent=self.root)
+                    messagebox.showerror("Error",constants.employee_already_exist,parent=self.root)
                 else:
                     cur.execute("INSERT INTO Employee (ID,Nombre,Email,Sexo,Contacto,F_Nacimiento,F_Ingreso,Password,T_Usuario,Dirección,Salario) values(?,?,?,?,?,?,?,?,?,?,?)",(
                                         self.var_emp_id.get(),
@@ -163,7 +163,7 @@ class employeeClass:
                                         self.var_salary.get()
                     ))
                     con.commit()
-                    messagebox.showinfo("Succes", "Employee Added Successfully",parent=self.root)
+                    messagebox.showinfo(constants.generic_added,constants.employee_added,parent=self.root)
                     self.show()
         except Exception as ex:
             messagebox.showerror("Error",f"Error due to: {str(ex)}",parent=self.root)
@@ -204,7 +204,7 @@ class employeeClass:
         cur=con.cursor()
         try:
             if self.var_emp_id.get()=="":
-                messagebox.showerror("Error","Employee ID Must be required",parent=self.root)
+                messagebox.showerror("Error",constants.employee_required_id_error,parent=self.root)
             else:
                 cur.execute("SELECT * FROM employee WHERE ID=?",(self.var_emp_id.get(),))
                 row=cur.fetchone()
@@ -225,7 +225,7 @@ class employeeClass:
                                         self.var_emp_id.get()
                     ))
                     con.commit()
-                    messagebox.showinfo("Succes", "Employee Updated Successfully",parent=self.root)
+                    messagebox.showinfo(constants.generic_updated, constants.employee_updated,parent=self.root)
                     self.show()
         except Exception as ex:
             messagebox.showerror("Error",f"Error due to: {str(ex)}",parent=self.root)
@@ -236,18 +236,18 @@ class employeeClass:
         cur=con.cursor()
         try:
             if self.var_emp_id.get()=="":
-                messagebox.showerror("Error","Employee ID Must be required",parent=self.root)
+                messagebox.showerror("Error",constants.employee_required_id_error,parent=self.root)
             else:
                 cur.execute("SELECT * FROM employee WHERE ID=?",(self.var_emp_id.get(),))
                 row=cur.fetchone()
                 if row==None:
                     messagebox.showerror("Error"," Employee ID",parent=self.root)
                 else:
-                    op=messagebox.askyesno("Confirm","Do you really want to delete",parent=self.root)
+                    op=messagebox.askyesno(constants.generic_confirm,constants.employee_confirm_delete,parent=self.root)
                     if op==True:
                         cur.execute("DELETE FROM Employee WHERE ID=?",(self.var_emp_id.get(),))
                         con.commit()
-                        messagebox.showinfo("Delete","Employee Deleted Successfully",parent=self.root)
+                        messagebox.showinfo(constants.generic_deleted,constants.employee_deleted,parent=self.root)
                         self.clear()
 
         except Exception as ex:
@@ -274,9 +274,9 @@ class employeeClass:
         cur=con.cursor()
         try:
             if self.var_searchby.get()==constants.generic_select:
-                messagebox.showerror("Error","Select Search By Option", parent=self.root)
+                messagebox.showerror("Error",constants.search_by_option_message, parent=self.root)
             elif self.var_searchtxt.get()=="":
-                messagebox.showerror("Error","Search input shoul be required", parent=self.root)
+                messagebox.showerror("Error",constants.search_input_required, parent=self.root)
 
             else:
                 cur.execute("SELECT * FROM Employee WHERE "+self.var_searchby.get()+" LIKE '%"+self.var_searchtxt.get()+"%'")
@@ -286,7 +286,7 @@ class employeeClass:
                     for row in rows:
                         self.EmployeeTable.insert('',END,values=row)
                 else:
-                    messagebox.showerror("Error", "No record found!!!",parent=self.root)
+                    messagebox.showerror("Error", constants.search_no_record_found,parent=self.root)
         except Exception as ex:
             messagebox.showerror("Error",f"Error due to : {str(ex)}", parent=self.root)
 
