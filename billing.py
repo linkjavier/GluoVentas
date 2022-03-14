@@ -124,7 +124,8 @@ class BillClass:
         # === Cart Frame ===
         cart_frame=Frame(Cal_Cart_Frame,bd=3,relief=RIDGE)
         cart_frame.place(x=280,y=8,width=245,height=310)
-        cartTitle=Label(cart_frame,text="Cart \t Total Product: [0]",font=("goudy old style",12),bg="lightgray").pack(side=TOP,fill=X)
+        self.cartTitle=Label(cart_frame,text="Cart \t Total Product: [0]",font=("goudy old style",12),bg="lightgray")
+        self.cartTitle.pack(side=TOP,fill=X)
         
         scrolly=Scrollbar(cart_frame,orient=VERTICAL)
         scrollx=Scrollbar(cart_frame,orient=HORIZONTAL)
@@ -235,7 +236,7 @@ class BillClass:
         con=sqlite3.connect(database='database.db')
         cur=con.cursor()
         try:
-            cur.execute("SELECT {},{},{},{},{} FROM Product".format(constants.product_id,constants.generic_name,constants.generic_price,constants.generic_quantity,constants.generic_status))
+            cur.execute("SELECT {},{},{},{},{} FROM Product where {}='{}'".format(constants.product_id,constants.generic_name,constants.generic_price,constants.generic_quantity,constants.generic_status,constants.generic_status,constants.generic_active))
             rows=cur.fetchall()
             self.ProductTable.delete(*self.ProductTable.get_children())
             for row in rows:
@@ -251,7 +252,7 @@ class BillClass:
                 messagebox.showerror("Error","Search input shoul be required", parent=self.root)
 
             else:
-                cur.execute(("SELECT {},{},{},{},{} FROM Product WHERE {} LIKE '%"+self.var_search.get()+"%'").format(constants.product_id,constants.generic_name,constants.generic_price,constants.generic_quantity,constants.generic_status,constants.generic_name))
+                cur.execute(("SELECT {},{},{},{},{} FROM Product WHERE {} LIKE '%"+self.var_search.get()+"%' and {}='{}'").format(constants.product_id,constants.generic_name,constants.generic_price,constants.generic_quantity,constants.generic_status,constants.generic_name,constants.generic_status,constants.generic_active))
                 rows=cur.fetchall()
                 if len(rows)!=0:
                     self.ProductTable.delete(*self.ProductTable.get_children())
@@ -316,10 +317,10 @@ class BillClass:
         for row in self.cart_list:
             bill_amnt=bill_amnt+row[2]
 
-        net_pay=(bill_amnt*5/100)
-
-        self.lbl_amnt.config(text=f'Bill Amount(COP)\n[{str(bill_amnt)}]')
-        self.lbl_net_pay.config(text=f'Net Pay(COP)\n[{str(net_pay)}]')
+        net_pay=bill_amnt-((bill_amnt*5)/100)
+        self.lbl_amnt.config(text=f'Bill Amount(COP)\n{str(bill_amnt)}')
+        self.lbl_net_pay.config(text=f'Net Pay(COP)\n{str(net_pay)}')
+        self.cartTitle.config(text=f"Cart \t Total Product: [{str(len(self.cart_list))}]")
 
 
     def show_cart(self):

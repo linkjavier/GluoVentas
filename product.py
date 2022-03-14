@@ -1,4 +1,3 @@
-from itertools import product
 from tkinter import *
 import constants
 from PIL import Image, ImageTk
