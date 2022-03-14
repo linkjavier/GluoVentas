@@ -1,4 +1,3 @@
-from itertools import product
 from tkinter import *
 import constants
 from PIL import Image, ImageTk
@@ -20,45 +19,13 @@ class IMS:
 
         # === Title ===
         self.icon_title = PhotoImage(file="images/logo1_small.png")
-        title = Label(
-            self.root,
-            text=constants.app_title,
-            image=self.icon_title,
-            compound=LEFT,
-            font=("times new roman", 20, "bold"),
-            bg="#010c48",
-            fg="white",
-            anchor="w",
-            padx=20).place(
-            x=0,
-            y=0,
-            relwidth=1,
-            height=70)
+        title = Label(self.root,text=constants.app_title,image=self.icon_title,compound=LEFT,font=("times new roman", 20, "bold"),bg="#010c48",fg="white",anchor="w",padx=20).place(x=0,y=0,relwidth=1,height=70)
 
         # === Button Logout ===
-        btn_logout = Button(
-            self.root,
-            text=constants.button_logout_text,
-            font=(
-                "times new roman",
-                14,
-                "bold"),
-            bg="white",
-            cursor="hand2").place(
-            x=1150,
-            y=10,
-            height=50,
-            width=150)
+        btn_logout = Button(self.root,text=constants.button_logout_text,font=("times new roman",14,"bold"),bg="white",cursor="hand2").place(x=1150,y=10,height=50,width=150)
 
         # === Clock ===
-        self.lbl_clock = Label(
-            self.root,
-            text=constants.welcome_date_hour_text_bar,
-            font=(
-                "times new roman",
-                12),
-            bg="#4d636d",
-            fg="white")
+        self.lbl_clock = Label(self.root,text=constants.welcome_date_hour_text_bar,font=("times new roman",12),bg="#4d636d",fg="white")
         self.lbl_clock.place(x=0, y=70, relwidth=1, height=30)
 
         # === Left Menu ===
@@ -79,7 +46,7 @@ class IMS:
         btn_employee = Button(LeftMenu,text=constants.generic_employees,command=self.employee,image=self.icon_side,compound=LEFT,padx=20,anchor="w",font=("times new roman",15,"bold"),bg="white",bd=3,cursor="hand2").pack(side=TOP,fill=X)
         btn_supplier = Button(LeftMenu,text=constants.generic_suppliers,command=self.supplier,image=self.icon_side,compound=LEFT,padx=20,anchor="w",font=("times new roman",15,"bold"),bg="white",bd=3,cursor="hand2").pack(side=TOP,fill=X)
         btn_category = Button(LeftMenu,text=constants.generic_categories,command=self.category,image=self.icon_side,compound=LEFT,padx=20,anchor="w",font=("times new roman",15,"bold"),bg="white",bd=3,cursor="hand2").pack(side=TOP,fill=X)
-        btn_product = Button(LeftMenu,text=constants.generic_product,command=self.product,image=self.icon_side,compound=LEFT,padx=20,anchor="w",font=("times new roman",15,"bold"),bg="white",bd=3,cursor="hand2").pack(side=TOP,fill=X)
+        btn_product = Button(LeftMenu,text=constants.generic_products,command=self.product,image=self.icon_side,compound=LEFT,padx=20,anchor="w",font=("times new roman",15,"bold"),bg="white",bd=3,cursor="hand2").pack(side=TOP,fill=X)
         btn_sales = Button(LeftMenu,text=constants.generic_sales,command=self.sales,image=self.icon_side,compound=LEFT,padx=20,anchor="w",font=("times new roman",15,"bold"),bg="white",bd=3,cursor="hand2").pack(side=TOP,fill=X)
         btn_exit = Button(LeftMenu,text=constants.generic_exit,image=self.icon_side,compound=LEFT,padx=20,anchor="w",font=("times new roman",15,"bold"),bg="white",bd=3,cursor="hand2").pack(side=TOP,fill=X)
 
@@ -100,14 +67,7 @@ class IMS:
         self.lbl_sales.place(x=650,y=300,height=150,width=300)
 
         # === Footer ===
-        self.lbl_clock = Label(
-            self.root,
-            text=constants.footer_text,
-            font=(
-                "times new roman",
-                12),
-            bg="#4d636d",
-            fg="white").pack(side=BOTTOM,fill=X)
+        self.lbl_clock = Label(self.root,text=constants.footer_text,font=("times new roman",12),bg="#4d636d",fg="white").pack(side=BOTTOM,fill=X)
 
 # ==============================================================
 
